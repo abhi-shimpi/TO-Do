@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>TO DO App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+    <!-- Main Body of to-do app -->
+    <div id="main">
+
+        <!-- header -->
+        <section id="header">
+            <h1>TO DO App</h1>
+        </section>
+
+        <!-- form -->
+        <section id="form">
+
+            <form action="/task-list" method="post">
+                <div id="discrption">
+                    <span>DISCRIPTION</span>
+                    <input type="text" name="name" placeholder="What do need to do?" required>
+                </div>
+
+                <div id="category-date">
+                    <div id="category">
+                        <h5>Category</h5>
+                        <select name="dropdown" id="dropdown" required>
+                            <option value="Chose a Category">Chose a Category</option>
+                            <option value="Home">Home</option>
+                            <option value="Work">Work</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Office">Office</option>
+                        </select>
+                    </div>
+
+                    <div id="date">
+                        <h5>Due Date</h5>
+                        <input type="date" name="date" id="" required>
+                    </div>
+                </div>
+
+                <!-- button to add task -->
+                <button id="add-task-btn" class="btn btn-secondary" type="submit">
+                    <span><i class="fas fa-plus"></i></span>
+                    <span>Add Task</span>
+                </button>
+            </form>
+
+        </section>
+
+        <!-- add and delete task buttons -->
+        <section id="btns">
+
+        </section>
+
+       
+        <!-- display task  -->
+        <section id="task-list">
+            <div id="show_tasks">
+
+                <form action="/delete-task" method="post">
+
+                    <% for(let item of content) { %>
+                        <!-- In order convert date into format of Oct 12 2019 -->
+                        <% var date=item.date %>   
+                        <% date=date.toString() %>
+                        <% date=date.slice(4,16); %>
+                                    <div id="task">
+                                       
+                                        <input type="checkbox" name="delete" value="<%= item.id %>"
+                                            id="<%= item.id %>">
+                                        <label for="<%= item.id %>" class="striketrough">
+
+                                            <div>
+                                                <span id="task-heading">
+                                                    <%= item.name %>
+                                                </span>
+                                                <br>
+                                                <span><i class="far fa-calendar-alt task-date"></i></span>
+                                                <span class="task-date">
+                                                    <%= date %> &nbsp;
+                                                </span>
+                                            </div>
+
+                                            <div>
+                                                <!-- In order to give diff color to categories -->
+                                                <% var btn=item.dropdown %>
+                                                <% btn=btn.toString() %>
+
+                                                <% if(btn=="Home" ) { %>
+                                                        <button type="button" id="cat-btn" class="btn btn-warning">
+                                                                <%= item.dropdown %>
+                                                        </button>
+                                                <%} %>
+                                                <% if(btn=="Personal" ) { %>
+                                                         <button type="button" id="cat-btn"
+                                                                        class="btn btn-success">
+                                                                        <%= item.dropdown %>
+                                                         </button>
+                                                <%}%>
+                                                <% if(btn=="Work" ) { %>
+                                                            <button type="button" id="cat-btn"
+                                                                                class="btn btn-secondary">
+                                                                                <%= item.dropdown %>
+                                                            </button>
+                                                <%}%>
+                                                <% if(btn=="Office" ) { %>
+                                                            <button type="button" id="cat-btn"
+                                                                                        class="btn btn-primary">
+                                                                                        <%= item.dropdown %>
+                                                             </button>
+                                                <%}%>
+                                            </div>
+                                            
+                                        </label>
+
+                                    </div>
+
+                    <% } %>
+                                    <button id="delete-task-btn" class="btn btn-danger" type="submit">
+                                            <span><i class="fas fa-trash-alt"></i></span>
+                                            <span>Delete Task</span>
+                                    </button>
+                </form>
+
+            </div>
+        </section>
+
+    </div>
+</body>
+
+
+
+
+</html>

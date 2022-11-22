@@ -1,0 +1,180 @@
+body{
+    background-color:azure;
+    display: flex;
+    justify-content: center;
+}
+
+/* css variable */
+:root{
+    --color :rgb(68, 67, 67)
+}
+
+/* Setting up height ,width & others for all 5 sections */
+#main{
+    height: 70vh;
+    width: 45vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: seashell;
+    box-shadow: 0px 3px 18px 3px grey;
+}
+
+#header{
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    color: var(--color);
+    border-bottom: 1px solid grey;
+}
+
+#form{
+    width: 95%;
+    height: 27%;
+}
+
+#btns{
+    width: 100%;
+    height: 20%;
+    border-top: 1px solid grey;
+}
+
+#task-list{
+    width: 95%;
+    height: 50%;
+    
+}
+
+
+/* Form Section */
+#discrption ,#category-date
+{
+    width: 100%;
+    height: 50%; 
+    
+}
+#discrption{
+    border-bottom: 1px solid grey;
+}
+#discrption span{
+    color: var(--color);
+    font-weight: bold;
+}
+#discrption input{
+   
+    width: 99.5%;
+    height: 3rem;
+    border: none;
+    font-size: 1.4rem;
+    background-color: transparent;
+}
+*:focus{
+    outline: none;
+}
+#category-date{
+    height: 100%;
+    display: flex;
+    color: var(--color);
+    font-weight: bold;
+  
+}
+#category{
+    width: 50%;
+    border-right: 1px solid gray;
+}
+#category select{
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    height: 2rem;
+    color: var(--color);
+    font-weight: bold;
+    border: none;
+    font-size: 1.2rem;
+    background-color: transparent;
+}
+
+#date{
+    width: 49%;
+    margin-left: 0.9rem;
+}
+#date input{
+    margin-top: -1.4rem;
+    width: 100%;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--color);
+    font-weight: bold;
+    background-color: transparent;
+   
+}
+
+
+/* Buttons section */
+/* Add Delete btns */
+#add-task-btn,#delete-task-btn{
+    width: 9rem;
+    height: 3rem;
+    font-size: 1.2rem;
+    position: absolute;
+    top: 27%;
+    border-radius: 1%;
+}
+#add-task-btn{
+    left: 40%;
+    background-color: rgb(56, 56, 56);
+}
+#delete-task-btn{
+    left: 50%;
+}
+
+
+/* Display task section */
+#show_tasks{
+    width: 100%;
+    height: 100%;
+   overflow: auto;
+}
+#show_tasks::-webkit-scrollbar{
+    display: none;
+}
+#task{
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    padding: 2rem .1rem;
+    border-top: 1px solid grey;
+   
+} 
+#task input{
+    width: 5%;
+}
+#task label{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#task-heading{
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color);
+}
+.task-date{
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(126, 126, 126);
+}
+
+
+/* On checked box line-through it */
+.striketrough{
+    transition: all .3s ;
+}
+
+input[type=checkbox]:checked + label.striketrough
+{
+    text-decoration: line-through;
+    opacity: 0.4;
+}
